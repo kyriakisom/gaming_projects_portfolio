@@ -1,0 +1,277 @@
+/* Set box-sizing to border-box for all elements and their pseudo-elements */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Body styles: background color, font family, and text color */
+body {
+  background: #f0f3f5;
+  font-family: 'Open Sans', sans-serif;
+  color: #2d2d2d;
+}
+
+/* Main card container for services section */
+/* Flex layout, max width, centered margin, rounded corners */
+/* Semi-transparent white background with blur effect */
+/* Subtle shadow and hidden overflow */
+/* Smooth transition on transform and shadow changes */
+.services-card {
+  display: flex;
+  max-width: 1180px;
+  margin: 7rem auto;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Hover effect on main card: slight scale up and stronger shadow */
+.services-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar styles */
+/* Gradient background with green tones */
+/* White text, fixed width, padding */
+/* Flex column layout, centered items */
+/* Thin white transparent border on right */
+.sidebar {
+  background: linear-gradient(135deg, #a8d383, #6f944b);
+  color: #fff;
+  width: 40%;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Navigation buttons */
+/* Semi-transparent white background */
+/* Circular shape with fixed size */
+/* White font color, centered content */
+/* Shadow for depth, smooth scaling on hover */
+.nav-button {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover effect for navigation buttons */
+/* Slight scaling up and increased background opacity */
+.nav-button:hover {
+  transform: scale(1.12);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Container for service list */
+/* Allows flexible growth and full width */
+/* Vertical layout with spacing between items */
+.service-list {
+  flex-grow: 1;
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Individual service item styles */
+/* Semi-transparent white background */
+/* Padding and rounded corners */
+/* Centered text, white color, medium weight */
+/* Slight transparency for non-active state */
+/* Smooth transform and opacity on hover */
+/* Cursor pointer for interactivity */
+/* Blur effect behind */
+.service-item {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.9rem 1.4rem;
+  border-radius: 12px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 500;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+/* Hover effect on service items */
+/* Increase opacity and slightly scale up */
+.service-item:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* Active state for selected service item */
+/* Solid white background */
+/* Green text, bold and larger font size */
+/* Full opacity and shadow for emphasis */
+.service-item.active {
+  background-color: #ffffff;
+  color: #6f944b;
+  font-weight: 700;
+  font-size: 1.3rem;
+  opacity: 1;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Details panel styles */
+/* Solid white background */
+/* Takes up 60% width */
+/* Padding for spacing */
+/* Flex column layout and vertically centered content */
+.details {
+  background: #ffffff;
+  width: 60%;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Placeholder image box */
+/* Light gray background with rounded corners */
+/* Fixed height */
+/* Green text centered vertically and horizontally */
+/* Margin below and subtle inset shadow */
+.image-placeholder {
+  background: #e8e8e8;
+  border-radius: 14px;
+  height: 220px;
+  color: #6f944b;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  box-shadow: inset 0 0 12px rgba(0,0,0,0.05);
+}
+
+/* Description text styles */
+/* Comfortable font size and line height */
+/* Darker text color for readability */
+.description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* Testimonials section spacing */
+.testimonials-section {
+  margin-top: 2.5rem;
+}
+
+/* Categories section title */
+/* Medium-large font, bold */
+/* Bottom margin and centered text */
+/* Dark gray color */
+.categories-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #444;
+}
+
+/* Container for category list */
+/* Vertical column layout with small gap */
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Individual category item styles */
+/* Padding and rounded corners */
+/* Centered text with white color */
+/* Slightly transparent for inactive */
+/* Semi-transparent white background */
+/* Smooth transition and pointer cursor */
+.category-item {
+  padding: 0.6rem 1.1rem;
+  border-radius: 8px;
+  text-align: center;
+  color: #ffffff;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.1);
+  cursor: pointer;
+}
+
+/* Hover effect for category items */
+/* Slightly increase opacity */
+.category-item:hover {
+  opacity: 0.85;
+}
+
+/* Active category item styles */
+/* Solid white background */
+/* Green text, bold */
+/* Drop shadow for emphasis */
+/* Full opacity */
+.category-item.active {
+  background-color: #ffffff;
+  color: #6f944b;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  opacity: 1;
+}
+
+/* Responsive styles for screens 768px wide and below */
+@media (max-width: 768px) {
+  /* Stack services card vertically */
+  .services-card {
+    flex-direction: column;
+    margin: 4rem 1.5rem;
+    border-radius: 18px;
+  }
+
+  /* Sidebar and details full width with adjusted padding */
+  .sidebar,
+  .details {
+    width: 100%;
+    padding: 2rem 1.5rem;
+    border-radius: 0;
+  }
+
+  /* Smaller navigation buttons */
+  .nav-button {
+    width: 42px;
+    height: 42px;
+    font-size: 1.3rem;
+  }
+
+  /* Smaller service items font and padding */
+  .service-item {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+  }
+
+  /* Smaller placeholder image height and font */
+  .image-placeholder {
+    height: 180px;
+    font-size: 1.2rem;
+  }
+
+  /* Smaller description font size and tighter line height */
+  .description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}

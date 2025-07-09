@@ -1,0 +1,433 @@
+/* ======================== GENERAL ======================== */
+
+/* Το βασικό container της navbar στην κορυφή της σελίδας */
+.navbar {
+  position: fixed;              /* Παραμένει σταθερή στην κορυφή κατά το scroll */
+  top: 0;
+  left: 0;
+  width: 100%;                  /* Πιάνει όλο το πλάτος της οθόνης */
+  padding: 1.2rem 2rem;         /* Εσωτερικό περιθώριο για καλύτερη εμφάνιση */
+  display: flex;                /* Flexbox layout για ευθυγράμμιση περιεχομένου */
+  justify-content: center;      /* Κέντρο οριζόντια */
+  align-items: center;          /* Κέντρο κάθετα */
+  background-color: transparent;/* Αρχικά διάφανο background */
+  z-index: 1000;                /* Πολύ ψηλά ώστε να είναι πάνω από άλλο περιεχόμενο */
+  font-weight: 600;             /* Bold-ish γραμματοσειρά */
+  letter-spacing: 0.05em;       /* Ελαφρύ κενό ανάμεσα στα γράμματα */
+  color: #2f3b05;               /* Σκούρο πράσινο χρώμα κειμένου */
+  font-family: 'Montserrat', sans-serif; /* Κομψή sans-serif γραμματοσειρά */
+  transition: top 0.4s ease-in-out;      /* Ομαλή κίνηση εμφάνισης/εξαφάνισης */
+}
+
+/* Κρυμμένη κατάσταση (π.χ. όταν γίνεται scroll προς τα κάτω) */
+.navbar.hidden {
+  top: -100px;                  /* Κρύβεται εκτός οθόνης προς τα πάνω */
+}
+
+/* Ορατή κατάσταση (scroll προς τα πάνω) */
+.navbar.visible {
+  top: 0;                       /* Επανέρχεται στην κορυφή */
+}
+
+
+/* ======================== CONTENT ======================== */
+
+/* Wrapper για το περιεχόμενο της navbar (οριοθετεί πλάτος) */
+.navbar-content {
+  width: 100%;                  /* Πιάνει όλο το πλάτος της navbar */
+  max-width: 1000px;            /* Μέγιστο πλάτος για καλή ανάγνωση */
+  display: flex;                /* Flexbox διάταξη */
+  justify-content: center;      /* Κέντρο οριζόντια */
+  align-items: center;          /* Κέντρο κάθετα */
+  gap: 3rem;                    /* Απόσταση ανάμεσα σε στοιχεία */
+  margin: 0 auto;               /* Κεντράρισμα στο viewport */
+}
+
+/* Ομάδα αριστερής πλευράς (λογότυπο + links) */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;                  /* Απόσταση ανάμεσα στα links */
+}
+
+/* Σύνδεσμοι στο αριστερό τμήμα */
+.nav-left a {
+  color: #2f3b05;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover / focus εφέ για καλύτερη αλληλεπίδραση */
+.nav-left a:hover,
+.nav-left a:focus {
+  color: #2f3b05;
+  transform: scale(1.1);
+}
+
+/* Κατάσταση active */
+.nav-left a:active {
+  color: #2f3b05;
+  transform: scale(1);
+}
+
+/* Κοντέινερ λογότυπου */
+.nav-logo {
+  margin: 0;
+}
+
+/* Εικόνα λογότυπου */
+.nav-logo img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Hover εφέ στο λογότυπο */
+.nav-logo img:hover {
+  transform: scale(1.1);
+}
+
+
+/* ======================== LANGUAGE ======================== */
+
+/* Εναλλαγή γλώσσας (κουμπί/επιλογή) */
+.language-switcher {
+  margin-left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1.2rem;
+  min-width: 40px;
+}
+
+/* Dropdown για επιλογή γλώσσας */
+.language-dropdown {
+  position: absolute;
+  top: 120%;                     /* Εμφανίζεται κάτω από το switcher */
+  left: 50%;
+  transform: translateX(-50%);   /* Κεντράρισμα οριζόντια */
+  background: rgba(255, 255, 255, 0.4); /* Ημιδιάφανο λευκό */
+  backdrop-filter: blur(16px) saturate(180%); /* Glassmorphism */
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+  padding: 0.6rem 1.2rem;
+  z-index: 10;
+  color: #333;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Κουμπιά στο dropdown */
+.language-dropdown button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #5a7e00;
+  padding: 0.4rem 0;
+  width: 100%;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hover εφέ στο κουμπί γλώσσας */
+.language-dropdown button:hover {
+  background-color: rgba(168, 198, 59, 0.2);
+  color: #a8c63b;
+}
+
+
+/* ======================== DROPDOWNS ======================== */
+
+/* Ομάδα για dropdown */
+.dropdown-group {
+  position: relative;
+  margin-left: 1rem;
+}
+
+/* Κουμπί για άνοιγμα dropdown */
+.dropdown-btn {
+  background: none;
+  border: 2px solid #7ba11e;
+  color: #7ba11e;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover εφέ στο κουμπί */
+.dropdown-btn:hover {
+  background-color: #a8c63b;
+  color: white;
+}
+
+/* Περιεχόμενο dropdown */
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #7ba11e;
+  border-radius: 5px;
+  margin-top: 0.3rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  min-width: 150px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Σύνδεσμοι στο dropdown */
+.dropdown-content a {
+  color: #5a7e00;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+/* Hover εφέ στους συνδέσμους */
+.dropdown-content a:hover {
+  background-color: #a8c63b;
+  color: white;
+}
+
+
+/* ======================== MOBILE BASE ======================== */
+
+/* Container για το responsive mobile menu, αρχικά κρυφό */
+.responsive-menu {
+  display: none;        /* Κρύβει το container σε desktop */
+  position: relative;   /* Για να τοποθετηθούν σωστά τα παιδιά του */
+}
+
+/* Στυλ για το κουμπί hamburger (που ανοίγει το mobile menu) */
+.hamburger {
+  display: none;        /* Κρύβει το hamburger σε desktop */
+  font-size: 2rem;      /* Μέγεθος εικονιδίου */
+  background: none;     
+  border: none;
+  color: #2f3b05;
+  cursor: pointer;
+  transform: translateY(-4px); /* Ελαφρύ vertical shift */
+  margin-left: 10rem;   /* Αρχικό margin αριστερά (responsive) */
+}
+
+/* Το πλαίσιο του mobile menu όταν ανοίγει */
+.mobile-menu {
+  position: fixed;
+  top: 0; right: 0;
+  width: 75%;           
+  max-width: 300px;
+  height: 100%;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(180, 220, 120, 0.4) 50%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.25),
+              inset 0 0 15px rgba(168, 198, 59, 0.2);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  z-index: 9999;
+  transform: translateX(100%) scale(0.9); 
+  opacity: 0;          
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity  0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* Όταν το menu είναι ανοιχτό */
+.mobile-menu.slide-in {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Σύνδεσμοι στο mobile menu */
+.mobile-menu a {
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  width: 100%;
+  transition: color 0.3s ease;
+}
+
+/* Hover εφέ */
+.mobile-menu a:hover {
+  color: #356208;
+}
+
+/* Header του mobile menu (λογότυπο + κουμπί κλεισίματος) */
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0 0.8rem;
+}
+
+/* Στυλ για το language switcher στο mobile */
+.language-switcher-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #708238;
+  font-size: 1.2rem;
+  gap: 0.8rem;
+  margin-left: -5rem;
+  position: relative;
+  top: -48px;
+}
+
+/* Εικονίδια γλώσσας */
+.language-switcher-mobile svg,
+.language-switcher-mobile .language-icon {
+  color: #000 !important;
+  fill: #000 !important;
+}
+
+/* Κουμπί κλεισίματος mobile menu */
+.close-menu {
+  font-size: 2.2rem;
+  color: #000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.4s ease;
+  transform-origin: center;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.7);
+  pointer-events: none;
+}
+
+/* Όταν το menu είναι ανοιχτό, εμφανίζεται το κουμπί κλεισίματος */
+.mobile-menu.slide-in .close-menu {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  pointer-events: auto;
+}
+
+/* Hover στο κουμπί κλεισίματος */
+.close-menu:hover {
+  color: #000;
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Overlay πίσω από το mobile menu */
+.mobile-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  z-index: 9998;
+  pointer-events: none;
+}
+
+/* Ενεργό overlay */
+.mobile-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+/* ======================== RESPONSIVE (@max-width: 960px) ======================== */
+
+@media (max-width: 960px) {
+
+  /* Κρύβουμε τα desktop στοιχεία */
+  .nav-left,
+  .desktop-menu,
+  .desktop-language,
+  .nav-logo {
+    display: none;
+  }
+
+  /* Responsive menu container (logo + hamburger) */
+  .responsive-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 1.5rem;
+  }
+
+  /* Mobile logo container */
+  .mobile-logo,
+  .mobile-logo-language {
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  /* Hamburger button στο mobile */
+  .hamburger {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #2f3b05;
+    cursor: pointer;
+    transform: translateY(-4px);
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Κείμενο "menu" δίπλα στο icon */
+  .hamburger-text {
+    font-size: 1.2rem;
+    text-transform: lowercase;
+    margin-right: 0.5rem;
+    color: #2f3b05;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  /* Switcher γλώσσας στο κάτω μέρος του mobile menu */
+  .mobile-language-switcher {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  /* Close button alignment */
+  .close-menu {
+    align-self: flex-end;
+    margin-bottom: 1rem;
+  }
+
+  /* Keyframes animation (αν χρησιμοποιηθεί) */
+  @keyframes rotateXOnce {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(90deg); }
+  }
+}

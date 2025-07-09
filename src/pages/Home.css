@@ -1,0 +1,134 @@
+/* Reset ύψους και margin για να δουλεύει σωστά το 100vh */
+/* Εφαρμόζουμε 100% ύψος και μηδενίζουμε περιθώρια και padding σε html, body και το root div */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Βασικό ύψος για Swiper και τα slides του */
+/* Θέτουμε σε swiper, swiper-wrapper και swiper-slide ύψος 100vh ώστε να γεμίζουν όλη την οθόνη */
+.swiper, .swiper-wrapper, .swiper-slide {
+  height: 100vh !important; /* !important για να υπερισχύει πιθανών άλλων στυλ */
+}
+
+/* Το div που κρατάει την εικόνα στο slide */
+/* Καλύπτει όλο το διαθέσιμο χώρο και η εικόνα προσαρμόζεται ώστε να καλύπτει πλήρως το background */
+.slide-bg {
+  height: 100%;
+  width: 100%;
+  background-size: cover !important;       /* η εικόνα καλύπτει πλήρως το container */
+  background-position: center !important;  /* κεντράρει την εικόνα */
+}
+
+/* Κουμπιά πάνω από το pagination */
+/* Τα κουμπιά τοποθετούνται απόλυτα στο κάτω κέντρο, με απόσταση 50px από το κάτω μέρος */
+.btn-overlay {
+  position: absolute;
+  bottom: 50px; /* 40-60px είναι καλό range για να μην είναι πολύ κοντά ή μακριά */
+  left: 50%;
+  transform: translateX(-50%); /* κεντράρισμα οριζόντια */
+  display: flex;               /* ευέλικτη διάταξη για να είναι τα κουμπιά δίπλα-δίπλα */
+  gap: 1rem;                   /* κενό 1rem μεταξύ κουμπιών */
+  z-index: 20;                 /* πάνω από άλλα στοιχεία */
+}
+
+/* Στυλ για κάθε κουμπί slide */
+.btn-slide {
+  padding: 0.9rem 1.8rem;               /* εσωτερικό padding για μέγεθος κουμπιού */
+  font-weight: 700;                     /* έντονο κείμενο */
+  text-transform: uppercase;            /* κεφαλαία γράμματα */
+  letter-spacing: 1px;                  /* λίγο κενό ανάμεσα στα γράμματα */
+  border: none;                        /* χωρίς περίγραμμα */
+  border-radius: 12px;                 /* στρογγυλεμένες γωνίες */
+  cursor: pointer;                    /* δείκτης χεριού για διαδραστικότητα */
+  text-decoration: none;              /* χωρίς υπογράμμιση */
+  color: #fff;                       /* λευκό κείμενο */
+  background: rgba(255, 255, 255, 0.1); /* ημιδιαφανές λευκό φόντο */
+  backdrop-filter: blur(10px);        /* θόλωση πίσω από το κουμπί */
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.3),  /* σκιά για βάθος */
+    0 0 15px rgba(168, 198, 59, 0.3); /* πράσινη λάμψη γύρω */
+  transition: all 0.3s ease-in-out;  /* ομαλή μετάβαση για όλα τα properties */
+  position: relative;                /* για να δουλεύει το ::before σωστά */
+  overflow: hidden;                 /* κρύβει οτιδήποτε βγαίνει έξω από τα όρια */
+}
+
+/* Εφέ λάμψης πριν το κουμπί */
+.btn-slide::before {
+  content: "";
+  position: absolute;
+  top: -50%;       /* ξεκινάει λίγο πάνω και αριστερά */
+  left: -50%;
+  width: 200%;     /* καλύπτει το διπλάσιο του κουμπιού */
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(168, 198, 59, 0.4), transparent 70%);
+  transform: scale(0);            /* αρχικά είναι μηδενικό το μέγεθος */
+  transition: transform 0.5s ease; /* ομαλή αύξηση μεγέθους */
+  z-index: 0;                    /* πίσω από το περιεχόμενο */
+}
+
+/* Όταν ο χρήστης περάσει το ποντίκι πάνω στο κουμπί, η λάμψη εμφανίζεται */
+.btn-slide:hover::before {
+  transform: scale(1); /* μεγαλώνει στο κανονικό μέγεθος */
+}
+
+/* Εφέ στο κουμπί κατά το hover */
+.btn-slide:hover {
+  background: rgba(168, 198, 59, 0.2);  /* πιο έντονο πράσινο φόντο */
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.4),        /* πιο έντονη σκιά */
+    0 0 25px rgba(168, 198, 59, 0.6);    /* πιο έντονη λάμψη */
+  color: #ffffff;                        /* λευκό κείμενο */
+}
+
+/* Στυλ για τα bullets του pagination του swiper */
+.swiper-pagination-bullets {
+  bottom: 10px !important; /* τοποθετείται 10px από κάτω */
+}
+
+/* Στυλ για κάθε bullet */
+.swiper-pagination-bullet {
+  background: white;
+  opacity: 0.7;               /* ημιδιαφανές */
+  transition: opacity 0.3s;   /* ομαλή μετάβαση */
+}
+
+/* Όταν το bullet είναι ενεργό */
+.swiper-pagination-bullet-active {
+  opacity: 1;              /* πλήρης αδιαφάνεια */
+  background: #6c8121;     /* σκούρο πράσινο */
+}
+
+/* Κείμενο καλωσορίσματος πάνω από το slide */
+/* Απόλυτη τοποθέτηση, κεντραρισμένο οριζόντια, λίγο πάνω από το κάτω μέρος */
+.welcome-text {
+  position: absolute;
+  bottom: 130px;
+  left: 50%;
+  transform: translateX(-50%);  /* κεντράρισμα */
+  font-size: 2.5rem;            /* μεγάλο μέγεθος γραμματοσειράς */
+  font-weight: 800;             /* πολύ έντονο */
+  color: #ffffff;               /* λευκό κείμενο */
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* σκιά κειμένου για ανάγλυφο */
+  background: rgba(0, 0, 0, 0.3); /* ημιδιαφανές μαύρο φόντο */
+  padding: 0.5rem 1.5rem;      /* εσωτερικό padding */
+  border-radius: 12px;         /* στρογγυλεμένες γωνίες */
+  backdrop-filter: blur(6px);  /* θόλωση πίσω από το στοιχείο */
+  z-index: 21;                 /* πάνω από άλλα στοιχεία */
+  animation: fadeInUp 1s ease-in-out forwards; /* animation εμφάνισης */
+  opacity: 0;                  /* αρχικά αόρατο */
+}
+
+/* Ορισμός keyframes animation fadeInUp */
+/* Από κάτω προς τα πάνω και από αόρατο σε ορατό */
+@keyframes fadeInUp {
+  0% {
+    transform: translateX(-50%) translateY(30px); /* ξεκινάει κάτω */
+    opacity: 0;                                   /* αόρατο */
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);   /* τελικό σημείο */
+    opacity: 1;                                   /* ορατό */
+  }
+}

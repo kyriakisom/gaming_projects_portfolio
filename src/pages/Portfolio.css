@@ -1,0 +1,318 @@
+/* === GLOBAL RESETS (optional but recommended) === */
+/* Αφαιρούμε default margin/padding από html & body, ορίζουμε full width και κρύβουμε το οριζόντιο overflow */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* === MAIN SECTION === */
+/* Κεντράρουμε το περιεχόμενο και δίνουμε padding πάνω (60px), χωρίς padding στα πλαϊνά */
+.portfolio-section {
+  text-align: center;
+  padding: 60px 0 0 0; /* Αφαιρέθηκε padding από τα πλαϊνά */
+}
+
+/* === Fade-in effect === */
+/* Κλάση για κρυφό στοιχείο πριν εμφανιστεί: διαφάνεια 0 και μετατόπιση προς τα κάτω */
+.fade-in-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Κλάση για εμφανές στοιχείο: πλήρης ορατότητα και επιστροφή στη θέση του */
+.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* === HEADER === */
+/* Μεγαλύτερο μέγεθος και margin κάτω για τον τίτλο */
+.portfolio-header h4 {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  color: #222;
+}
+
+/* Μέγεθος, margin και χρώμα για την παράγραφο */
+.portfolio-header p {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: #555;
+}
+
+/* Μικρότερο μέγεθος και πιο ανοιχτό γκρι για το small text */
+.portfolio-header small {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* === CAROUSEL === */
+/* Wrapper του carousel: κεντράρισμα, column flex, margin πάνω, και μικρή κλίμακα */
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  transform-origin: top center; /* Σημείο αναφοράς κλίμακας */
+  transform: scale(0.65); /* Μικρό μέγεθος */
+  width: 100%; /* Πλήρες πλάτος */
+}
+
+/* Container για το carousel, θέση relative για να τοποθετηθούν buttons */
+.carousel-container {
+  width: 100%; /* Πλήρες πλάτος */
+  position: relative;
+}
+
+/* Container για Swiper με padding κάτω για τα controls */
+.carousel-container-swiper {
+  width: 100%;
+  padding-bottom: 140px; /* Χώρος για κουμπιά και pagination */
+}
+
+/* Κάθε slide: λευκό background, συγκεκριμένο μέγεθος, σκιά και στρογγυλεμένες γωνίες */
+.carousel-slide {
+  background: white;
+  width: 200px;
+  height: 300px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0.5; /* Μισή διαφάνεια αρχικά */
+  filter: grayscale(40%); /* Αποχρωματισμένο */
+  transform: scale(0.85); /* Μικρότερο μέγεθος */
+}
+
+/* Το ενεργό slide: πλήρης ορατότητα, χωρίς αποχρωματισμό, κανονικό μέγεθος και πιο έντονη σκιά */
+.carousel-slide.swiper-slide-active {
+  opacity: 1;
+  filter: grayscale(0);
+  transform: scale(1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  z-index: 10; /* Επάνω από τα υπόλοιπα */
+}
+
+/* Τα slides πριν και μετά το ενεργό: μέτρια διαφάνεια, λιγότερο αποχρωματισμένα, λίγο μικρότερα */
+.carousel-slide.swiper-slide-prev,
+.carousel-slide.swiper-slide-next {
+  opacity: 0.6;
+  filter: grayscale(20%);
+  transform: scale(0.9);
+  z-index: 5;
+}
+
+/* Όλα τα υπόλοιπα slides (μακριά από το ενεργό): πολύ χαμηλή διαφάνεια και έντονο αποχρωματισμό */
+.carousel-slide:not(.swiper-slide-active):not(.swiper-slide-prev):not(.swiper-slide-next) {
+  opacity: 0.3;
+  filter: grayscale(50%);
+  transform: scale(0.8);
+  z-index: 1;
+}
+
+/* Εικόνα μέσα σε κάθε slide: πλήρες πλάτος και ύψος, αντικείμενο καλυμμένο και στρογγυλεμένες γωνίες */
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  cursor: pointer; /* Δείχνει ότι είναι clickable */
+}
+
+/* === OVERLAY TEXT === */
+/* Κείμενο που εμφανίζεται στο κάτω μέρος κάθε slide, με ημιδιαφανές μαύρο φόντο */
+.overlay-text-top {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  pointer-events: none; /* Δεν πιάνει κλικ */
+  user-select: none; /* Δεν επιτρέπει επιλογή κειμένου */
+  padding: 10px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.4); /* Ημιδιαφανές μαύρο */
+  max-height: 50%; /* Μέγιστο ύψος */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Τοποθετεί κείμενο στο κάτω μέρος */
+  z-index: 10;
+  font-size: 0.75rem;
+}
+
+/* Τίτλος και παράγραφος με μηδενικά margin/padding, και σκιά κειμένου για καλύτερη ανάγνωση */
+.overlay-text-top h3,
+.overlay-text-top p {
+  margin: 0;
+  padding: 0 5px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+/* === NAVIGATION BUTTONS === */
+/* Κουμπιά next και prev με κυκλικό σχήμα, σκούρο φόντο και σκιά */
+.carousel-button-next,
+.carousel-button-prev {
+  z-index: 20;
+  position: absolute;
+  top: 50%; /* Κεντράρισμα κατακόρυφα */
+  transform: translateY(-50%);
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(145deg, #2e2e2e, #1a1a1a);
+  border-radius: 50%; /* Στρογγυλά */
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.3),
+    -6px -6px 12px rgba(60, 60, 60, 0.15);
+  transition: all 0.3s ease;
+  user-select: none; /* Αποφυγή επιλογής κειμένου */
+}
+
+/* Εσωτερική λάμψη κύκλου στα κουμπιά (αρχικά κρυφή) */
+.carousel-button-next::before,
+.carousel-button-prev::before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(168, 198, 59, 0.3); /* Πράσινη λάμψη */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Όταν ο χρήστης περνάει το ποντίκι από πάνω, εμφανίζεται η λάμψη */
+.carousel-button-next:hover::before,
+.carousel-button-prev:hover::before {
+  opacity: 1;
+}
+
+/* Αλλαγή background, πιο έντονη λάμψη και κλίμακα στο hover */
+.carousel-button-next:hover,
+.carousel-button-prev:hover {
+  background: linear-gradient(145deg, #3a3a3a, #1e1e1e);
+  box-shadow:
+    0 0 10px rgba(168, 198, 59, 0.5),
+    inset 0 0 5px rgba(168, 198, 59, 0.4);
+  transform: scale(1.15);
+}
+
+/* Εφέ πίεσης στο κουμπί κατά το click */
+.carousel-button-next:active,
+.carousel-button-prev:active {
+  transform: scale(0.95);
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.6),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.05);
+}
+
+/* Βελάκια με γραμμές που σχηματίζουν βέλος */
+.carousel-button-next::after,
+.carousel-button-prev::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-top: 4px solid #a8c63b; /* Πράσινο */
+  border-right: 4px solid #a8c63b;
+  transform: rotate(45deg); /* Βέλος δεξιά */
+  transition: transform 0.3s ease;
+}
+
+/* Το βέλος του κουμπιού prev γυρνάει αντίστροφα */
+.carousel-button-prev::after {
+  transform: rotate(-135deg);
+}
+
+/* Θέση κουμπιών στα αριστερά και δεξιά */
+.carousel-button-prev {
+  left: 10px;
+}
+
+.carousel-button-next {
+  right: 10px;
+}
+
+/* === PAGINATION === */
+/* Στυλ για τα bullets του pagination κάτω από το carousel */
+.custom-pagination {
+  margin-top: 30px;
+  text-align: center;
+  width: 100%;
+}
+
+/* Bullets: μικρά κυκλάκια με χρώμα και διαφάνεια */
+.custom-pagination .swiper-pagination-bullet {
+  background: #a8c63b; /* Πράσινο */
+  opacity: 0.3; /* Αμυδρή εμφάνιση */
+  width: 8px;
+  height: 8px;
+  margin: 0 3px;
+  transition: opacity 0.3s ease;
+  display: inline-block;
+  border-radius: 50%; /* Στρογγυλά */
+}
+
+/* Ενεργό bullet με πλήρη αδιαφάνεια */
+.custom-pagination .swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+/* === RESPONSIVE: MOBILE VIEW === */
+/* Ρυθμίσεις για οθόνες μικρότερες από 768px */
+@media (max-width: 768px) {
+  /* Καλύτερη κλίμακα και πλήρες πλάτος για το wrapper */
+  .carousel-wrapper {
+    transform: scale(1);
+    width: 100%;
+  }
+
+  .carousel-container {
+    width: 100%;
+  }
+
+  .carousel-container-swiper {
+    width: 100%;
+    padding-bottom: 80px; /* Λιγότερο padding κάτω */
+  }
+
+  /* Slides πιο ευέλικτα στο μέγεθος (85% του viewport πλάτος, 60% ύψος) */
+  .carousel-slide {
+    width: 85vw;
+    height: 60vh;
+  }
+
+  /* Εικόνες πλήρους μεγέθους, καλυμμένες */
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Overlay text πιο μεγάλο και με padding */
+  .overlay-text-top {
+    font-size: 0.9rem;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+  }
+
+  /* Pagination πλήρους πλάτους και με margin πάνω */
+  .custom-pagination {
+    width: 100%;
+    margin-top: 30px;
+  }
+}

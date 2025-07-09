@@ -1,0 +1,61 @@
+/* Βασικό στυλ για το στοιχείο με κλάση .footer */
+.footer {
+  padding: 1.5rem 2rem; /* Εσωτερικό περιθώριο πάνω-κάτω 1.5rem, δεξιά-αριστερά 2rem */
+  text-align: center; /* Στοίχιση κειμένου στο κέντρο */
+  font-family: 'Arial', sans-serif; /* Οικογένεια γραμματοσειράς */
+  font-weight: 400; /* Κανονικό πάχος γραμματοσειράς */
+  font-size: 1.1rem; /* Μέγεθος γραμματοσειράς */
+  color: #e6f0d4; /* πολύ ανοιχτό πράσινο χρώμα για το κείμενο */
+
+  /* Γραμμικό ντεγκραντέ φόντο με εναλλαγή χρωμάτων */
+  background: linear-gradient(270deg, #556B2F, #6B8E23, #8FBC8F, #4A6C21);
+  background-size: 800% 800%; /* Τεράστιο μέγεθος φόντου για ομαλή κίνηση στο animation */
+
+  /* Κίνηση του ντεγκραντέ με animation που επαναλαμβάνεται άπειρα */
+  animation: gradientShift 15s ease infinite;
+
+  border-top: 4px solid #4A6C21; /* Πάνω περίγραμμα με σκούρο olive green χρώμα */
+  
+  /* Σκιά για βάθος */
+  box-shadow: 0 5px 15px rgba(75, 108, 33, 0.6);
+
+  user-select: none; /* Απενεργοποίηση επιλογής κειμένου από τον χρήστη */
+
+  border-radius: 8px 8px 0 0; /* Στρογγυλεμένες γωνίες επάνω (κάτω είναι ίσιες) */
+
+  /* Ομαλή μετάβαση στη σκιά όταν κάνουμε hover */
+  transition: box-shadow 0.3s ease;
+}
+
+/* Στυλ όταν ο χρήστης περνάει το ποντίκι πάνω από το footer */
+.footer:hover {
+  box-shadow: 0 8px 20px rgba(75, 108, 33, 0.9); /* Μεγαλύτερη και πιο σκούρα σκιά */
+  cursor: default; /* Δείκτης ποντικιού ως default (όχι pointer) */
+}
+
+/* Κινούμενο φόντο: αλλαγή θέσης του gradient με το χρόνο */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%; /* Αρχική θέση */
+  }
+  50% {
+    background-position: 100% 50%; /* Μέση θέση, πλήρης μετατόπιση προς τα δεξιά */
+  }
+  100% {
+    background-position: 0% 50%; /* Επιστροφή στην αρχική θέση για loop */
+  }
+}
+
+/* Επαναλαμβανόμενο - αφαιρέστε αν θέλετε */
+/* Είναι το ίδιο με το παραπάνω και περιττό */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

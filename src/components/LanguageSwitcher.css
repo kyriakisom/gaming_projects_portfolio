@@ -1,0 +1,62 @@
+/* Γενικό κοντέινερ για τον language switcher */
+.language-switcher {
+  position: absolute;     /* Απόλυτη τοποθέτηση σε σχέση με τον γονέα */
+  top: 28px;               /* Λίγο πιο κάτω από την κορυφή */
+  left: 80px;              /* Πιο δεξιά στη σελίδα */
+  z-index: 99999;          /* Πολύ ψηλό z-index για να είναι πάντα από πάνω */
+  pointer-events: auto;    /* Να δέχεται κλικ/αλληλεπίδραση */
+  display: inline-block;   /* Inline-block για σωστή διάταξη */
+}
+
+/* Στυλ για το κουμπί με το εικονίδιο υδρογείου */
+.globe-button {
+  background: none;                 /* Χωρίς φόντο */
+  border: none;                     /* Χωρίς περίγραμμα */
+  cursor: pointer;                  /* Δείκτης "χεράκι" στο hover */
+  padding: 0.2rem;                  /* Λίγο εσωτερικό περιθώριο */
+  display: flex;                    /* Flexbox για στοίχιση του περιεχομένου */
+  align-items: center;              /* Κάθετη στοίχιση κέντρου */
+  justify-content: center;          /* Οριζόντια στοίχιση κέντρου */
+  transition: transform 0.2s ease;  /* Ομαλή μετάβαση στην κλίμακα (scale) */
+  font-size: 1.8rem;                /* Λίγο μεγαλύτερο μέγεθος για καλύτερη εμφάνιση */
+  color: #ffffff;                   /* Λευκό χρώμα για το εικονίδιο */
+}
+
+/* Εφέ όταν κάνεις hover στο κουμπί της υδρογείου */
+.globe-button:hover {
+  transform: scale(1.15); /* Μεγαλώνει λίγο όταν περνάει το ποντίκι από πάνω */
+}
+
+/* Στυλ για το dropdown menu που εμφανίζεται όταν ανοίξει ο language switcher */
+.dropdown {
+  position: absolute;                          /* Απόλυτη θέση σε σχέση με τον γονέα */
+  top: 120%;                                   /* Κάτω από το κουμπί */
+  left: 50%;                                   /* Στη μέση του κουμπιού */
+  transform: translateX(-50%);                 /* Οριζόντια κεντράρισμα */
+  background: rgba(255, 255, 255, 0.85);       /* Ημιδιαφανές λευκό φόντο */
+  backdrop-filter: blur(6px);                  /* Εφέ θολώματος πίσω από το μενού */
+  border: 1px solid rgba(150, 150, 150, 0.3);  /* Απαλό περίγραμμα */
+  border-radius: 10px;                         /* Στρογγυλεμένες γωνίες */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);   /* Σκιά για βάθος */
+  padding: 0.5rem 1rem;                        /* Εσωτερικό περιθώριο */
+  z-index: 1000;                               /* Να είναι πάνω από άλλα στοιχεία */
+  text-align: center;                          /* Κεντρική στοίχιση κειμένου */
+  min-width: 130px;                            /* Ελάχιστο πλάτος */
+  transition: all 0.3s ease;                   /* Ομαλή μετάβαση για αλλαγές */
+}
+
+/* Στυλ για κάθε επιλογή (item) μέσα στο dropdown */
+.dropdown div {
+  padding: 0.4rem 0;                                      /* Κάθετο περιθώριο για ευκολία στο κλικ */
+  cursor: pointer;                                        /* Δείκτης χεριού στο hover */
+  color: #5a7e00;                                         /* Σκούρο πράσινο χρώμα */
+  font-weight: 600;                                       /* Έντονη γραφή για εμφάνιση */
+  transition: color 0.2s ease, background-color 0.2s ease; /* Ομαλή μετάβαση σε hover */
+}
+
+/* Εφέ hover για τις επιλογές του dropdown */
+.dropdown div:hover {
+  color: #a8c63b;                                         /* Πιο ανοιχτό πράσινο χρώμα στο hover */
+  background-color: rgba(255, 255, 255, 0.2);             /* Ελαφρύ φόντο στο hover */
+  border-radius: 5px;                                     /* Στρογγυλεμένες γωνίες στο hover */
+}

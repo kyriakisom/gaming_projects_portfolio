@@ -1,0 +1,160 @@
+/* === Βασικά === */
+body {
+  margin: 0;             /* Καθαρίζει default margin του browser */
+  padding: 0;            /* Καθαρίζει default padding */
+  font-family: 'Open Sans', sans-serif; /* Ορίζει γραμματοσειρά */
+}
+
+.about-section {
+  width: 100%;           /* Πλήρες πλάτος */
+  padding-top: 120px;    /* Απόσταση από πάνω */
+}
+
+/* === Top Section === */
+.top-section {
+  display: flex;         /* Οριζόντια διάταξη flexbox */
+  flex-wrap: wrap;       /* Επιτρέπει περιτύλιξη στα μικρά μεγέθη οθόνης */
+  background-color: #EAE6DA; /* Ζεστή μπεζ απόχρωση φόντου */
+}
+
+.top-left {
+  flex: 1;               /* Καταλαμβάνει ίσο χώρο με top-right */
+  padding: 80px;         /* Εσωτερικό περιθώριο */
+  display: flex;         /* Flexbox για στοίχιση περιεχομένου */
+  justify-content: center; /* Κεντράρει οριζόντια */
+  align-items: center;   /* Κεντράρει κάθετα */
+}
+
+.top-left h1 {
+  font-size: 36px;       /* Μέγεθος τίτλου */
+  color: #4A5D23;        /* Σκούρο πράσινο (Deep Moss) */
+  line-height: 1.5;      /* Ύψος γραμμής για αναγνωσιμότητα */
+}
+
+.top-right {
+  flex: 1;               /* Ίσο πλάτος με top-left */
+}
+
+.top-right img {
+  width: 100%;           /* Πλήρες πλάτος container */
+  height: 100%;          /* Πλήρες ύψος container */
+  object-fit: cover;     /* Καλύπτει τον χώρο χωρίς να παραμορφώνει */
+}
+
+/* === Middle Section === */
+.middle-section {
+  display: flex;         /* Οριζόντια διάταξη flexbox */
+  flex-wrap: wrap;       /* Περιτύλιξη αν χρειαστεί */
+}
+
+.side-label {
+  background-color: #6B8E23; /* Σκούρο πράσινο (Olive Drab) */
+  writing-mode: vertical-rl; /* Κείμενο κάθετα από δεξιά προς αριστερά */
+  transform: rotate(180deg); /* Περιστροφή κειμένου 180 μοίρες */
+  display: flex;         /* Flexbox για κεντράρισμα */
+  align-items: center;   /* Κάθετο κεντράρισμα */
+  justify-content: center; /* Οριζόντιο κεντράρισμα */
+  padding: 40px 20px;    /* Εσωτερικά περιθώρια */
+  min-width: 80px;       /* Ελάχιστο πλάτος */
+}
+
+.side-label span {
+  font-size: 28px;       /* Μέγεθος κειμένου */
+  font-weight: bold;     /* Έντονη γραφή */
+  color: #BCC6A3;        /* Απαλή πράσινη απόχρωση (Sage) */
+}
+
+.about-text {
+  flex: 1;               /* Καταλαμβάνει διαθέσιμο χώρο */
+  background-color: white; /* Λευκό φόντο */
+  padding: 60px 80px;    /* Εσωτερικά περιθώρια */
+}
+
+.about-text p {
+  font-size: 18px;       /* Μέγεθος κειμένου */
+  color: #333;           /* Σκούρο γκρι χρώμα */
+  line-height: 1.8;      /* Ύψος γραμμής για ευκολία ανάγνωσης */
+  margin-bottom: 20px;   /* Κενό κάτω από κάθε παράγραφο */
+}
+
+/* === Bottom Section === */
+.bottom-section {
+  display: flex;         /* Οριζόντια διάταξη */
+  flex-wrap: wrap;       /* Περιτύλιξη αν χρειαστεί */
+}
+
+.bottom-left {
+  flex: 1;               /* Ισοκατανομή χώρου */
+}
+
+.bottom-left img {
+  width: 100%;           /* Πλήρες πλάτος */
+  height: 100%;          /* Πλήρες ύψος */
+  object-fit: cover;     /* Κάλυψη χωρίς παραμόρφωση */
+}
+
+.bottom-right {
+  flex: 1;               /* Ισοκατανομή χώρου */
+  background-color: #A3B18A; /* Απαλή πράσινη απόχρωση (Pale Olive) */
+  padding: 80px;         /* Εσωτερικό padding */
+  display: flex;         /* Flexbox για στοίχιση */
+  align-items: center;   /* Κάθετο κεντράρισμα */
+  justify-content: center; /* Οριζόντιο κεντράρισμα */
+}
+
+.bottom-right a {
+  background-color: #4A5D23; /* Σκούρο πράσινο (Deep Moss) */
+  color: white;          /* Άσπρο κείμενο */
+  padding: 15px 40px;    /* Εσωτερικό padding κουμπιού */
+  border-radius: 30px;   /* Στρογγυλεμένες γωνίες */
+  text-decoration: none; /* Αφαίρεση υπογράμμισης */
+  font-size: 18px;       /* Μέγεθος κειμένου */
+  transition: background-color 0.3s ease; /* Ομαλή μετάβαση χρώματος στο hover */
+}
+
+.bottom-right a:hover {
+  background-color: #5c6e2f; /* Ανοιχτότερο πράσινο στο hover */
+}
+
+/* === Responsive === */
+/* Προσαρμογές για οθόνες έως 1024px */
+@media (max-width: 1024px) {
+  .top-left, .bottom-right {
+    padding: 40px;       /* Μειωμένο padding */
+  }
+  .about-text {
+    padding: 40px;       /* Μειωμένο padding για κείμενο */
+  }
+}
+
+/* Προσαρμογές για οθόνες έως 768px (κινητά) */
+@media (max-width: 768px) {
+  .top-section, .bottom-section {
+    flex-direction: column; /* Στοίχιση κατακόρυφα */
+  }
+
+  .side-label {
+    writing-mode: horizontal-tb; /* Κείμενο οριζόντια */
+    transform: rotate(0);        /* Καμία περιστροφή */
+    padding: 20px;               /* Μικρότερο padding */
+    min-width: 100%;             /* Πλήρες πλάτος */
+    justify-content: flex-start; /* Στοίχιση αριστερά */
+  }
+
+  .side-label span {
+    font-size: 24px;             /* Μικρότερο μέγεθος γραμματοσειράς */
+  }
+}
+
+/* === Animation Fade In === */
+.fade-in-hidden {
+  opacity: 0;                   /* Αόρατο */
+  transform: translateY(40px);  /* Μετακίνηση προς τα κάτω */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Ομαλή μετάβαση */
+}
+
+.fade-in-visible {
+  opacity: 1;                   /* Ορατό */
+  transform: translateY(0);     /* Στη φυσική του θέση */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Ομαλή μετάβαση */
+}

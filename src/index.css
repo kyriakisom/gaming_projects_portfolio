@@ -1,0 +1,63 @@
+/* Εισαγωγή βασικών Tailwind directives για βάση, components και utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ορισμός ύψους και μηδενισμός margin/padding για html, body και το root div */
+html, body, #root {
+  height: 100%; /* Για να γεμίζει το ύψος της οθόνης */
+  margin: 0;    /* Αφαίρεση προεπιλεγμένων περιθωρίων */
+  padding: 0;   /* Αφαίρεση προεπιλεγμένου padding */
+}
+
+/* Στυλ για το σώμα της σελίδας χρησιμοποιώντας Tailwind utility classes */
+body {
+  @apply bg-ivory text-charcoal; /* Φόντο ivory και κείμενο charcoal (χρωματικοί ορισμοί Tailwind) */
+}
+
+/* Κοινή κλάση κουμπιού με padding, φόντο, χρώμα κειμένου, στρογγυλεμένες γωνίες και εφέ hover */
+.btn {
+  @apply px-4 py-2 bg-olive text-white rounded hover:bg-olive/90 transition; 
+  /* px-4 py-2 = οριζόντιο και κάθετο padding
+     bg-olive = φόντο χρώματος olive
+     text-white = λευκό κείμενο
+     rounded = ελαφρώς στρογγυλεμένες γωνίες
+     hover:bg-olive/90 = στο hover το φόντο γίνεται 90% αδιαφανές
+     transition = ομαλή μετάβαση εφέ */
+}
+
+/* Στυλ για navbar με ευθυγράμμιση περιεχομένου, padding, φόντο, σκιά και σταθερή θέση */
+.navbar {
+  @apply flex justify-between items-center px-6 py-4 bg-white shadow-md fixed w-full z-50;
+  /* flex = flex container
+     justify-between = απόσταση ανάμεσα στα στοιχεία (άκρα)
+     items-center = κάθετη στοίχιση στο κέντρο
+     px-6 py-4 = padding οριζόντια και κάθετα
+     bg-white = λευκό φόντο
+     shadow-md = μεσαία σκιά
+     fixed = σταθερή θέση πάνω στην οθόνη
+     w-full = πλάτος 100%
+     z-50 = υψηλό z-index για να είναι πάνω από άλλα στοιχεία */
+}
+
+/* Στυλ για footer με μικρό μέγεθος γραμματοσειράς, κεντραρισμένο κείμενο, padding και χρώματα */
+.footer {
+  @apply text-sm text-center py-2 bg-charcoal text-white;
+  /* text-sm = μικρό μέγεθος κειμένου
+     text-center = κεντραρισμένο κείμενο
+     py-2 = κάθετο padding
+     bg-charcoal = φόντο charcoal (σκούρο)
+     text-white = λευκό κείμενο */
+}
+
+/* Επαναπροσδιορισμός της κλάσης .btn με διαφορετικό padding, φόντο και εφέ hover */
+.btn {
+  @apply px-5 py-2 bg-black/60 text-white rounded-md hover:bg-black/80 transition backdrop-blur-sm;
+  /* px-5 py-2 = μεγαλύτερο οριζόντιο padding, ίδιο κάθετο
+     bg-black/60 = μαύρο φόντο με 60% αδιαφάνεια
+     text-white = λευκό κείμενο
+     rounded-md = μέτρια στρογγυλεμένες γωνίες
+     hover:bg-black/80 = πιο αδιαφανές μαύρο στο hover
+     transition = ομαλή μετάβαση
+     backdrop-blur-sm = ελαφρύ εφέ θόλωσης στο φόντο πίσω από το κουμπί */
+}

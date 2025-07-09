@@ -1,0 +1,139 @@
+.testimonials {
+  padding: 4rem 1rem; /* Κενά γύρω από το container: 4rem πάνω-κάτω, 1rem δεξιά-αριστερά */
+  text-align: center; /* Κεντράρει το κείμενο οριζόντια */
+  background: #fff; /* Λευκό φόντο */
+  font-family: 'Segoe UI', sans-serif; /* Ορισμός γραμματοσειράς */
+}
+
+.title {
+  font-size: 2rem;       /* Μέγεθος γραμματοσειράς για τον τίτλο */
+  font-weight: 600;      /* Μικρή πάχυνση γραμματοσειράς */
+  color: #333;           /* Σκούρο γκρι χρώμα κειμένου */
+  margin-bottom: 3rem;   /* Κενό κάτω από τον τίτλο */
+}
+
+.carousel {
+  display: flex;                 /* Flex container για τα στοιχεία */
+  align-items: center;           /* Κάθετη στοίχιση στο κέντρο */
+  justify-content: center;       /* Οριζόντια στοίχιση στο κέντρο */
+  gap: 1rem;                    /* Κενό 1rem μεταξύ των παιδιών */
+  flex-wrap: nowrap;             /* Απαγόρευση αναδίπλωσης των παιδιών */
+}
+
+.nav {
+  position: relative;           /* Για να μπορεί να τοποθετηθεί το pseudo element */
+  background: none;             /* Χωρίς φόντο */
+  border: none;                 /* Χωρίς περίγραμμα */
+  font-size: 2rem;              /* Μέγεθος εικονιδίου/κουμπιού */
+  cursor: pointer;              /* Δείκτης ποντικιού χειρός */
+  color: #333;                  /* Σκούρο γκρι χρώμα */
+  transition: color 0.3s ease, transform 0.3s ease; /* Ομαλές αλλαγές στο χρώμα και το μέγεθος */
+  z-index: 0;                   /* Κανονική στοίχιση σε ζ-άξονα */
+}
+
+/* Δημιουργία κύκλου πίσω από το εικονίδιο */
+.nav::before {
+  content: "";                         /* Κενό περιεχόμενο */
+  position: absolute;                  /* Απόλυτη θέση μέσα στο .nav */
+  top: 50%;                           /* Κάθετα στο κέντρο */
+  left: 50%;                          /* Οριζόντια στο κέντρο */
+  width: 40px;                        /* Πλάτος κύκλου */
+  height: 40px;                       /* Ύψος κύκλου */
+  background-color: #a8c63b;          /* Πράσινο χρώμα φόντου */
+  border-radius: 50%;                 /* Κύκλος */
+  transform: translate(-50%, -50%) scale(0); /* Αρχικά μικρός κρυφός */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Ομαλές αλλαγές */
+  opacity: 0.3;                      /* Ημιδιαφάνεια */
+  z-index: -1;                      /* Πίσω από το εικονίδιο */
+}
+
+/* Εφέ hover στο κουμπί πλοήγησης */
+.nav:hover {
+  color: #fff;                      /* Άσπρο χρώμα στο εικονίδιο */
+  transform: scale(1.2);            /* Μεγέθυνση κατά 20% */
+}
+
+/* Εμφάνιση κύκλου στο hover */
+.nav:hover::before {
+  transform: translate(-50%, -50%) scale(1); /* Κύκλος πλήρους μεγέθους */
+  opacity: 0.4;                            /* Ελαφρώς πιο έντονη ημιδιαφάνεια */
+}
+
+.cards {
+  display: flex;                       /* Τα testimonials σε σειρά */
+  gap: 1rem;                          /* Κενό 1rem μεταξύ των καρτών */
+  overflow: hidden;                   /* Απόκρυψη περιεχομένου που ξεπερνάει το πλάτος */
+  width: 90%;                        /* Πλάτος 90% του container */
+  max-width: 1000px;                  /* Μέγιστο πλάτος */
+  justify-content: center;            /* Κεντράρισμα καρτών */
+}
+
+.card {
+  width: 300px;                       /* Σταθερό πλάτος κάρτας */
+  background: #fff;                   /* Λευκό φόντο */
+  border-radius: 1rem;                /* Στρογγυλεμένες γωνίες */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08); /* Ελαφριά σκιά */
+  padding: 2rem 1.5rem;               /* Εσωτερικά κενά */
+  opacity: 0.5;                      /* Ημιδιαφανές */
+  transition: transform 0.3s, opacity 0.3s; /* Ομαλές αλλαγές μεγέθους και διαφάνειας */
+}
+
+.card.active {
+  opacity: 1;                       /* Πλήρης αδιαφάνεια για την ενεργή κάρτα */
+  transform: scale(1.05);           /* Μικρή μεγέθυνση για έμφαση */
+}
+
+.avatar {
+  width: 80px;                      /* Πλάτος εικόνας avatar */
+  height: 80px;                     /* Ύψος εικόνας avatar */
+  object-fit: cover;                /* Κάλυψη εικόνας χωρίς παραμόρφωση */
+  border-radius: 50%;              /* Στρογγυλό avatar */
+  margin: 0 auto 1rem;              /* Κεντράρισμα και κενό κάτω */
+}
+
+.name {
+  font-weight: 700;                /* Έντονο κείμενο για το όνομα */
+  margin: 0.5rem 0 0.2rem;         /* Κενά πάνω και κάτω */
+  color: #2c3e50;                 /* Σκούρο μπλε χρώμα */
+}
+
+.role {
+  font-size: 0.9rem;              /* Μικρότερο μέγεθος κειμένου για τον ρόλο */
+  color: #a8c63b;                 /* Πράσινο χρώμα (ταιριάζει με το θέμα) */
+  margin-bottom: 1rem;            /* Κενό κάτω */
+}
+
+.text {
+  font-style: italic;             /* Πλάγια γραφή */
+  font-size: 0.95rem;             /* Ελαφρώς μικρότερο μέγεθος */
+  color: #444;                   /* Σκούρο γκρι */
+  margin-bottom: 1rem;            /* Κενό κάτω */
+}
+
+.stars {
+  color: #f1c40f;                /* Χρυσό χρώμα για αστέρια (κριτικές) */
+  font-size: 1.2rem;             /* Ελαφρώς μεγαλύτερο μέγεθος */
+}
+
+/* Responsive styles για οθόνες μικρότερες από 768px */
+@media (max-width: 768px) {
+  .carousel {
+    flex-direction: column;     /* Οι κάρτες στοιχίζονται κάθετα */
+    gap: 2rem;                  /* Μεγαλύτερο κενό μεταξύ */
+  }
+
+  .cards {
+    flex-direction: column;     /* Κάρτες στοιχισμένες κάθετα */
+    align-items: center;        /* Κεντράρισμα οριζόντια */
+  }
+
+  .card {
+    width: 100%;                /* Κάρτα καταλαμβάνει όλο το πλάτος container */
+    max-width: 350px;           /* Μέγιστο πλάτος κάρτας */
+  }
+
+  .nav {
+    font-size: 2.5rem;          /* Μεγαλύτερα βελάκια navigation */
+    color: #a8c63b;             /* Πράσινο χρώμα (ταιριάζει με το θέμα) */
+  }
+}
