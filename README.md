@@ -1,7 +1,6 @@
 # React + Vite + Tailwind CSS Πολυγλωσσική Εφαρμογή
 
-Αυτή η εφαρμογή είναι μια μοντέρνα Single Page Application (SPA) φτιαγμένη με React, που χρησιμοποιεί το Vite για ανάπτυξη και build, το Tailwind CSS για γρήγορο και ευέλικτο styling, καθώς και το react-i18next για υποστήριξη πολλαπλών γλωσσών (Ελληνικά και Αγγλικά).
-
+This application is a modern Single Page Application (SPA) built with React, using Vite for development and build, Tailwind CSS for fast and flexible styling, and react-i18next for multilingual support (Greek and English).
 ---
 
 ## Περιεχόμενα
